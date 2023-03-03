@@ -268,7 +268,7 @@ class WorkspaceManager(object):
         return staged_df
 
 
-    def upload_entities(self, etype, df, index=True):
+    def upload_entities(self, etype, df, index=True, model='firecloud'):
         """
         index: True if DataFrame index corresponds to ID
         Uploads local files present in the DF
@@ -276,7 +276,7 @@ class WorkspaceManager(object):
         # upload dataframe contents
         buf = io.StringIO()
         self.upload_entity_data(etype, df).to_csv(buf, sep='\t', index=index)
-        s = firecloud.api.upload_entities(self.namespace, self.workspace, buf.getvalue())
+        s = firecloud.api.upload_entities(self.namespace, self.workspace, buf.getvalue(), model=model)
         buf.close()
 
         et = etype.replace('_set', ' set')

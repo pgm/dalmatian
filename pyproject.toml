@@ -1,9 +1,12 @@
 [tool.poetry]
-name = "dalmatian"
+name = "firecloud-dalmatian"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
+packages = [
+    { include = "dalmatian" }
+]
 
 [tool.poetry.dependencies]
 python = ">3.9,<4.0"
